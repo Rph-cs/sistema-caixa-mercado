@@ -17,7 +17,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new Splash_screen_GUI().setVisible(true);
+        new Tela_Inicial_GUI().setVisible(true);
     }
     
 }

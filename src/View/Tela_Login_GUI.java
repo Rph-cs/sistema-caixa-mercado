@@ -49,7 +49,7 @@ public class Tela_Login_GUI extends javax.swing.JFrame {
         jLabel1.setBounds(540, 0, 310, 480);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/carrinho-de-compras.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Carrinho_mercado.png"))); // NOI18N
         jPanel1.add(jLabel2);
         jLabel2.setBounds(220, 20, 80, 80);
 
