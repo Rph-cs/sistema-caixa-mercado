@@ -43,6 +43,7 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jTextField3 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -137,6 +138,9 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Caixa", new javax.swing.ImageIcon(getClass().getResource("/Image/caixa.png")), Caixa, ""); // NOI18N
 
+        jPanel1.setLayout(null);
+        jTabbedPane1.addTab("Historico", new javax.swing.ImageIcon(getClass().getResource("/Image/historia.png")), jPanel1); // NOI18N
+
         jTabbedPane1.setSelectedComponent(Caixa);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,6 +206,7 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
