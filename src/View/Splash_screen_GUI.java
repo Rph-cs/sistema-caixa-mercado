@@ -67,10 +67,10 @@ public class Splash_screen_GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(852, 479));
+        setSize(new java.awt.Dimension(852, 480));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
