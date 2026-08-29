@@ -29,22 +29,20 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         Caixa = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -62,71 +60,15 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
         Caixa.setPreferredSize(new java.awt.Dimension(700, 700));
         Caixa.setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setLayout(null);
-
-        jPanel4.setLayout(null);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel2.setText("Subtotal");
-        jPanel4.add(jLabel2);
-        jLabel2.setBounds(360, 10, 60, 20);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel3.setText("Produtos");
-        jPanel4.add(jLabel3);
-        jLabel3.setBounds(20, 10, 80, 19);
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel4.setText("Qtd.");
-        jPanel4.add(jLabel4);
-        jLabel4.setBounds(220, 10, 40, 20);
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel5.setText("Unitário");
-        jPanel4.add(jLabel5);
-        jLabel5.setBounds(280, 10, 60, 20);
-
-        jPanel1.add(jPanel4);
-        jPanel4.setBounds(0, 50, 440, 40);
-
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Itens da venda");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(10, 10, 140, 40);
-
-        jButton1.setBackground(new java.awt.Color(255, 204, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Deletar");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(0, 380, 130, 40);
-
-        jButton2.setBackground(new java.awt.Color(0, 255, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Finalizar");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(290, 380, 140, 40);
-
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Cancelar");
-        jPanel1.add(jButton3);
-        jButton3.setBounds(140, 380, 140, 40);
-
-        Caixa.add(jPanel1);
-        jPanel1.setBounds(410, 0, 440, 440);
-
         jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Adicionar produto");
         Caixa.add(jLabel1);
         jLabel1.setBounds(0, 10, 170, 40);
 
-        jLabel8.setText("_________________________________________________________________");
+        jLabel8.setText("___________________________________________________________________________________________________");
         Caixa.add(jLabel8);
-        jLabel8.setBounds(0, 40, 470, 20);
+        jLabel8.setBounds(0, 40, 870, 20);
 
         jLabel9.setText("Codigo de Barra");
         Caixa.add(jLabel9);
@@ -139,6 +81,59 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
         jLabel10.setBounds(10, 160, 160, 20);
         Caixa.add(jTextField2);
         jTextField2.setBounds(10, 190, 340, 40);
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Deletar");
+        Caixa.add(jButton1);
+        jButton1.setBounds(370, 360, 140, 40);
+
+        jButton2.setBackground(new java.awt.Color(0, 255, 0));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Finalizar");
+        Caixa.add(jButton2);
+        jButton2.setBounds(680, 360, 150, 40);
+
+        jButton3.setBackground(new java.awt.Color(255, 0, 0));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Cancelar");
+        Caixa.add(jButton3);
+        jButton3.setBounds(520, 360, 150, 40);
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Itens da venda");
+        Caixa.add(jLabel6);
+        jLabel6.setBounds(400, 10, 140, 40);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Produto", "Qtd.", "Unitário", "Subtotal"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        Caixa.add(jScrollPane1);
+        jScrollPane1.setBounds(380, 70, 452, 200);
+        Caixa.add(jTextField3);
+        jTextField3.setBounds(10, 270, 70, 40);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Qtd.");
+        Caixa.add(jLabel2);
+        jLabel2.setBounds(10, 250, 34, 22);
 
         jTabbedPane1.addTab("Caixa", new javax.swing.ImageIcon(getClass().getResource("/Image/caixa.png")), Caixa, ""); // NOI18N
 
@@ -204,16 +199,14 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
