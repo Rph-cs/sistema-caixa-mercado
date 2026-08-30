@@ -79,6 +79,11 @@ public class Tela_Login_GUI extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Entrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(120, 370, 280, 50);
 
@@ -102,6 +107,18 @@ public class Tela_Login_GUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(852, 479));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String usuario = jTextField2.getText();
+        String senha = new String(jPasswordField1.getPassword());
+
+        if (usuario.isEmpty() || senha.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            return;
+        }
+        
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
