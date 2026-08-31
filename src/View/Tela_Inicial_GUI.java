@@ -11,9 +11,6 @@ package View;
  */
 public class Tela_Inicial_GUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_Inicial_GUI
-     */
     public Tela_Inicial_GUI() {
         initComponents();
     }
@@ -35,14 +32,15 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
+        btnAdicionar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField3 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        btnFinalizar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,37 +67,52 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
 
         jLabel8.setText("___________________________________________________________________________________________________");
         Caixa.add(jLabel8);
-        jLabel8.setBounds(0, 40, 870, 20);
+        jLabel8.setBounds(0, 40, 870, 16);
 
         jLabel9.setText("Codigo de Barra");
         Caixa.add(jLabel9);
-        jLabel9.setBounds(10, 70, 120, 20);
+        jLabel9.setBounds(10, 70, 120, 16);
         Caixa.add(jTextField1);
         jTextField1.setBounds(10, 100, 340, 40);
 
         jLabel10.setText("Ou nome do produto");
         Caixa.add(jLabel10);
-        jLabel10.setBounds(10, 160, 160, 20);
+        jLabel10.setBounds(10, 160, 160, 16);
         Caixa.add(jTextField2);
         jTextField2.setBounds(10, 190, 340, 40);
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Deletar");
-        Caixa.add(jButton1);
-        jButton1.setBounds(370, 360, 140, 40);
+        btnDeletar.setBackground(new java.awt.Color(255, 204, 0));
+        btnDeletar.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeletar.setText("Deletar");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
+        Caixa.add(btnDeletar);
+        btnDeletar.setBounds(370, 360, 140, 40);
 
-        jButton2.setBackground(new java.awt.Color(0, 255, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Finalizar");
-        Caixa.add(jButton2);
-        jButton2.setBounds(680, 360, 150, 40);
+        btnAdicionar.setBackground(new java.awt.Color(0, 0, 255));
+        btnAdicionar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
+        Caixa.add(btnAdicionar);
+        btnAdicionar.setBounds(10, 360, 150, 40);
 
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Cancelar");
-        Caixa.add(jButton3);
-        jButton3.setBounds(520, 360, 150, 40);
+        btnCancelar.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        Caixa.add(btnCancelar);
+        btnCancelar.setBounds(520, 360, 150, 40);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -136,6 +149,17 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
         Caixa.add(jLabel2);
         jLabel2.setBounds(10, 250, 34, 22);
 
+        btnFinalizar.setBackground(new java.awt.Color(0, 255, 0));
+        btnFinalizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnFinalizar.setText("Finalizar");
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarActionPerformed(evt);
+            }
+        });
+        Caixa.add(btnFinalizar);
+        btnFinalizar.setBounds(680, 360, 150, 40);
+
         jTabbedPane1.addTab("Caixa", new javax.swing.ImageIcon(getClass().getResource("/Image/caixa.png")), Caixa, ""); // NOI18N
 
         jPanel1.setLayout(null);
@@ -159,6 +183,73 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(852, 479));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+
+        String codigo = jTextField1.getText().trim();
+        String qtdTexto = jTextField3.getText().trim();
+
+        if (codigo.isEmpty() || qtdTexto.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Preencha o código de barras e a quantidade!");
+            return;
+        }
+
+        int quantidade = Integer.parseInt(qtdTexto);
+
+        Controller.ProdutoDAO dao = new Controller.ProdutoDAO();
+        Model.Produto produto = dao.buscarPorCodigo(codigo);
+
+        if (produto != null) {
+            double subtotal = produto.getPreco() * quantidade;
+            javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+            modelo.addRow(new Object[]{produto.getNome(), quantidade, produto.getPreco(), subtotal});
+            jTextField1.setText("");
+            jTextField3.setText("");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Produto não encontrado!");
+        }
+    }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        int linhaSelecionada = jTable1.getSelectedRow();
+        if (linhaSelecionada >= 0) {
+            javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+            modelo.removeRow(linhaSelecionada);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Selecione um item para deletar!");
+        }
+    }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        int confirm = javax.swing.JOptionPane.showConfirmDialog(null, "Deseja cancelar a venda?", "Cancelar", javax.swing.JOptionPane.YES_NO_OPTION);
+        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+            javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+            modelo.setRowCount(0);
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+        }
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+        javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+
+        if (modelo.getRowCount() == 0) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Adicione pelo menos um produto!");
+            return;
+        }
+
+        double total = 0;
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            Object valor = modelo.getValueAt(i, 3);
+            if (valor != null) {
+                total += (double) valor;
+            }
+        }
+
+        new Pagamento_GUI(total).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnFinalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,9 +288,10 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Caixa;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnFinalizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

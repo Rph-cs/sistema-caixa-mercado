@@ -12,7 +12,7 @@ public class ConexaoBD {
     
     public static Connection conectar(){
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(URL, USUARIO, SENHA); 
             
         } catch(ClassNotFoundException e) {
