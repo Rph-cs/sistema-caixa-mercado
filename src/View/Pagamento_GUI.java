@@ -4,11 +4,13 @@ public class Pagamento_GUI extends javax.swing.JFrame {
 
     private double total;
     private String formaPagamento = "";
+    private java.util.List<Model.ItemVenda> itens;
 
-    public Pagamento_GUI(double total) {
+    public Pagamento_GUI(double total, java.util.List<Model.ItemVenda> itens) {
         initComponents();
 
         this.total = total;
+        this.itens = itens;
         jLabel1.setText("Total da Compra: R$ " + String.format("%.2f", total));
     }
 
@@ -190,7 +192,20 @@ public class Pagamento_GUI extends javax.swing.JFrame {
         }
 
         javax.swing.JOptionPane.showMessageDialog(null, "Pagamento confirmado!");
-        dispose();
+
+        Model.Venda venda = new Model.Venda();
+        venda.setIdOperador(1);
+        venda.setTotal(total);
+        venda.setFormaPagamento(formaPagamento);
+        venda.setTroco(0);
+        venda.setItens(itens);
+
+        Controller.VendaDAO dao = new Controller.VendaDAO();
+        if (dao.salvarVenda(venda)) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Pagamento confirmado!");
+            new Tela_Inicial_GUI().setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_btnConfirmarPagamentoActionPerformed
 
     private void btnDinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDinheiroActionPerformed
@@ -255,7 +270,7 @@ public class Pagamento_GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pagamento_GUI(0).setVisible(true);
+                new Pagamento_GUI(0, new java.util.ArrayList<>()).setVisible(true);
             }
         });
     }
