@@ -5,11 +5,13 @@
         <group>
             <file>file:/C:/Users/davia/sistema-caixa-mercado/src/View/Pagamento_GUI.java</file>
             <file>file:/C:/Users/davia/sistema-caixa-mercado/src/Model/Venda.java</file>
-            <file>file:/C:/Users/davia/sistema-caixa-mercado/src/Model/Itemvenda.java</file>
+            <file>file:/C:/Users/davia/sistema-caixa-mercado/src/Model/ItemVenda.java</file>
             <file>file:/C:/Users/davia/sistema-caixa-mercado/src/config/ConexaoBD.java</file>
             <file>file:/C:/Users/davia/sistema-caixa-mercado/src/View/Tela_Inicial_GUI.java</file>
             <file>file:/C:/Users/davia/sistema-caixa-mercado/src/main/Main.java</file>
             <file>file:/C:/Users/davia/sistema-caixa-mercado/src/Controller/VendaDAO.java</file>
+            <file>file:/C:/Users/davia/sistema-caixa-mercado/src/Model/Cliente.java</file>
+            <file>file:/C:/Users/davia/sistema-caixa-mercado/src/View/Registro_GUI.java</file>
         </group>
     </open-files>
 </project-private>

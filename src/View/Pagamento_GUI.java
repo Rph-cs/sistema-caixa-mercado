@@ -4,13 +4,16 @@ public class Pagamento_GUI extends javax.swing.JFrame {
 
     private double total;
     private String formaPagamento = "";
+    private boolean trocoCalculado = false;
     private java.util.List<Model.ItemVenda> itens;
+    private Model.Operador operadorLogado;
 
-    public Pagamento_GUI(double total, java.util.List<Model.ItemVenda> itens) {
+    public Pagamento_GUI(double total, java.util.List<Model.ItemVenda> itens, Model.Operador operador) {
         initComponents();
 
         this.total = total;
         this.itens = itens;
+        this.operadorLogado = operador;
         jLabel1.setText("Total da Compra: R$ " + String.format("%.2f", total));
     }
 
@@ -165,45 +168,49 @@ public class Pagamento_GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        new Tela_Inicial_GUI().setVisible(true);
+        new Tela_Inicial_GUI(operadorLogado).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
-
+    
     private void btnConfirmarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarPagamentoActionPerformed
         if (formaPagamento.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(null, "Selecione uma forma de pagamento!");
             return;
         }
 
-        if (formaPagamento.equals("DINHEIRO")) {
+        double troco = 0;
+
+        if (formaPagamento.equals("DINHEIRO") && !trocoCalculado) {
             String valorTexto = jTextField1.getText().trim();
             if (valorTexto.isEmpty()) {
                 javax.swing.JOptionPane.showMessageDialog(null, "Informe o valor entregue!");
                 return;
             }
             double valorEntregue = Double.parseDouble(valorTexto);
-            double troco = valorEntregue - total;
+            troco = valorEntregue - total;
             if (troco < 0) {
                 javax.swing.JOptionPane.showMessageDialog(null, "Valor insuficiente!");
                 return;
             }
             jLabel5.setText("R$ " + String.format("%.2f", troco));
+            trocoCalculado = true;
             return;
         }
-
-        javax.swing.JOptionPane.showMessageDialog(null, "Pagamento confirmado!");
 
         Model.Venda venda = new Model.Venda();
         venda.setIdOperador(1);
         venda.setTotal(total);
         venda.setFormaPagamento(formaPagamento);
-        venda.setTroco(0);
+        venda.setTroco(formaPagamento.equals("DINHEIRO") ? Double.parseDouble(jTextField1.getText()) - total : 0);
         venda.setItens(itens);
 
         Controller.VendaDAO dao = new Controller.VendaDAO();
+        
+        venda.setIdOperador(operadorLogado.getIdOperador());
+        
         if (dao.salvarVenda(venda)) {
             javax.swing.JOptionPane.showMessageDialog(null, "Pagamento confirmado!");
-            new Tela_Inicial_GUI().setVisible(true);
+            new Tela_Inicial_GUI(operadorLogado).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnConfirmarPagamentoActionPerformed
@@ -270,7 +277,7 @@ public class Pagamento_GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pagamento_GUI(0, new java.util.ArrayList<>()).setVisible(true);
+                new Pagamento_GUI(0, new java.util.ArrayList<>(), new Model.Operador()).setVisible(true);
             }
         });
     }

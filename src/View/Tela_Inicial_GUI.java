@@ -2,11 +2,21 @@ package View;
 
 public class Tela_Inicial_GUI extends javax.swing.JFrame {
 
-    public Tela_Inicial_GUI() {
+    private Model.Operador operadorLogado;
+
+    public Tela_Inicial_GUI(Model.Operador operador) {
         initComponents();
+
+        this.operadorLogado = operador;
+
         jTable1.getColumnModel().getColumn(4).setMinWidth(0);
         jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
         jTable1.getColumnModel().getColumn(4).setWidth(0);
+
+        if (operador.getPerfilOperador() == null
+                || !operador.getPerfilOperador().equals(Model.enums.Perfil.GERENTE)) {
+            jTabbedPane1.removeTabAt(1);
+        }
 
         jTabbedPane1.addChangeListener(e -> {
             if (jTabbedPane1.getSelectedIndex() == 1) {
@@ -304,7 +314,7 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
             }
         }
 
-        new Pagamento_GUI(total, itens).setVisible(true);
+        new Registro_GUI(total, itens, operadorLogado).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
@@ -338,9 +348,7 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
                     rs.getString("status")
                 });
             }
-        } 
-        
-        catch (java.sql.SQLException e) {
+        } catch (java.sql.SQLException e) {
             javax.swing.JOptionPane.showMessageDialog(null, "Erro ao carregar histórico: " + e.getMessage());
         }
     }
@@ -380,7 +388,7 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela_Inicial_GUI().setVisible(true);
+                new Tela_Inicial_GUI(new Model.Operador()).setVisible(true);
             }
         });
     }
