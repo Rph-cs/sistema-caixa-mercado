@@ -16,6 +16,38 @@ public class Splash_screen_GUI extends javax.swing.JFrame {
      */
     public Splash_screen_GUI() {
         initComponents();
+        
+        new Thread() {
+        public void run() {
+            for (int i = 0; i < 101; i++) {
+                try {
+                    sleep(60);
+                    jProgressBar1.setValue(i);
+                    jLabel2.setText(i + "%");
+
+                    if (jProgressBar1.getValue() == 10) {
+                        jLabel1.setText("Fazendo conexão com o banco de dados");
+                        sleep(300);
+                        
+                    } else if (jProgressBar1.getValue() < 60) {
+                        jLabel1.setText("Carregando...");
+                        
+                    } else if (jProgressBar1.getValue() < 100) {
+                        jLabel1.setText("Quase pronto...");
+                        
+                    } else {
+                        jLabel1.setText("Carregamento completo");
+                        sleep(3000);
+                        new Tela_Login_GUI().setVisible(true);
+                        dispose();
+                    }
+
+                } catch (InterruptedException ex) {
+                    java.util.logging.Logger.getLogger(Splash_screen_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }.start();  
     }
 
     /**
@@ -46,7 +78,7 @@ public class Splash_screen_GUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Informação do carregamento");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(300, 380, 230, 22);
+        jLabel1.setBounds(250, 380, 360, 22);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -67,10 +99,10 @@ public class Splash_screen_GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(852, 479));
+        setSize(new java.awt.Dimension(852, 480));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
