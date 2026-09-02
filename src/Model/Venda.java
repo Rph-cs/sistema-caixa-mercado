@@ -13,7 +13,7 @@ public class Venda {
     public Venda() {}
 
     public int getIdVenda() { return idVenda; }
-    public void setIdVenda(int idVenda) { this.idVenda = idVenda; }
+    public void setIdVendaa(int idVenda) { this.idVenda = idVenda; }
 
     public int getIdOperador() { return idOperador; }
     public void setIdOperador(int idOperador) { this.idOperador = idOperador; }

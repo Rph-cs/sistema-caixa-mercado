@@ -46,10 +46,10 @@ public class Pagamento_GUI extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 29)); // NOI18N
         jLabel1.setText("Total da Compra");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(17, 18, 360, 22);
+        jLabel1.setBounds(17, 18, 360, 70);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(10, 20, 400, 120);
@@ -147,10 +147,8 @@ public class Pagamento_GUI extends javax.swing.JFrame {
         jLabel4.setText("Troco");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(250, 170, 60, 22);
-
-        jLabel5.setText("Puxar o valor, e aparecer aqui");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(180, 190, 220, 16);
+        jLabel5.setBounds(180, 190, 220, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,47 +169,56 @@ public class Pagamento_GUI extends javax.swing.JFrame {
         new Tela_Inicial_GUI(operadorLogado).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
-    
+
     private void btnConfirmarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarPagamentoActionPerformed
         if (formaPagamento.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(null, "Selecione uma forma de pagamento!");
             return;
         }
 
+        if (operadorLogado == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Erro: Nenhum operador logado encontrado!");
+            return;
+        }
+
         double troco = 0;
 
-        if (formaPagamento.equals("DINHEIRO") && !trocoCalculado) {
+        if (formaPagamento.equals("DINHEIRO")) {
             String valorTexto = jTextField1.getText().trim();
             if (valorTexto.isEmpty()) {
                 javax.swing.JOptionPane.showMessageDialog(null, "Informe o valor entregue!");
                 return;
             }
-            double valorEntregue = Double.parseDouble(valorTexto);
-            troco = valorEntregue - total;
-            if (troco < 0) {
-                javax.swing.JOptionPane.showMessageDialog(null, "Valor insuficiente!");
+            try {
+                double valorEntregue = Double.parseDouble(valorTexto.replace(",", "."));
+                troco = valorEntregue - total;
+                if (troco < 0) {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Valor insuficiente!");
+                    return;
+                }
+                jLabel5.setText("R$ " + String.format("%.2f", troco));
+            } catch (NumberFormatException e) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Digite um valor numérico válido!");
                 return;
             }
-            jLabel5.setText("R$ " + String.format("%.2f", troco));
-            trocoCalculado = true;
-            return;
         }
 
         Model.Venda venda = new Model.Venda();
-        venda.setIdOperador(1);
+        venda.setIdOperador(operadorLogado.getIdOperador());
         venda.setTotal(total);
         venda.setFormaPagamento(formaPagamento);
-        venda.setTroco(formaPagamento.equals("DINHEIRO") ? Double.parseDouble(jTextField1.getText()) - total : 0);
+        venda.setTroco(troco);
         venda.setItens(itens);
 
         Controller.VendaDAO dao = new Controller.VendaDAO();
-        
-        venda.setIdOperador(operadorLogado.getIdOperador());
-        
+
         if (dao.salvarVenda(venda)) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Pagamento confirmado!");
-            new Tela_Inicial_GUI(operadorLogado).setVisible(true);
-            dispose();
+            Model.GeradorNota.gerar(venda.getIdVenda(), venda.getTotal(), venda.getFormaPagamento(), venda.getTroco(), venda.getItens());
+
+            javax.swing.JOptionPane.showMessageDialog(null, "Pagamento confirmado! A Nota Fiscal foi gerada com sucesso.");
+
+            new View.Tela_Inicial_GUI(operadorLogado).setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_btnConfirmarPagamentoActionPerformed
 

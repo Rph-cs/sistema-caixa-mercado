@@ -35,8 +35,6 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         btnDeletar = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -84,12 +82,6 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
         jLabel9.setBounds(10, 70, 120, 16);
         Caixa.add(jTextField1);
         jTextField1.setBounds(10, 100, 340, 40);
-
-        jLabel10.setText("Ou nome do produto");
-        Caixa.add(jLabel10);
-        jLabel10.setBounds(10, 160, 160, 16);
-        Caixa.add(jTextField2);
-        jTextField2.setBounds(10, 190, 340, 40);
 
         btnDeletar.setBackground(new java.awt.Color(255, 204, 0));
         btnDeletar.setForeground(new java.awt.Color(255, 255, 255));
@@ -285,7 +277,6 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
             javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) jTable1.getModel();
             modelo.setRowCount(0);
             jTextField1.setText("");
-            jTextField2.setText("");
             jTextField3.setText("");
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -401,7 +392,6 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -414,7 +404,6 @@ public class Tela_Inicial_GUI extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables

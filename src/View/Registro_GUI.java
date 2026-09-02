@@ -8,6 +8,7 @@ public class Registro_GUI extends javax.swing.JFrame {
 
     public Registro_GUI(double total, java.util.List<Model.ItemVenda> itens, Model.Operador operador) {
         initComponents();
+        this.operadorLogado = operador;
         this.total = total;
         this.itens = itens;
 
